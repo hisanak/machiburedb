@@ -40,11 +40,11 @@ export default {
     return {
       title: 'マチブレ素材集め -素材名から検索-',
       description: 'マチガイブレイカーの非公式攻略Webページです。素材を選ぶことでドロップするクエストを検索できます。',
-      item_data: [],
-      quest_world1_data: [],
-      quest_week_data: [],
-      quest_event_data: [],
-      groups: [{name: '汎用素材', id: 'G'}, {name: 'ブキ素材', id: 'W'}, {name: 'スピリット素材', id: 'S'}, {name: '玉素材', id: 'B'}, {name: 'イベント素材', id: 'E'}],
+      item_data: require('../db/item.json'),
+      quest_world1_data: require('../db/world1.json'),
+      quest_week_data: require('../db/week.json'),
+      quest_event_data: require('../db/event.json'),
+      groups: require('../db/group.json'),
       checked_groups: ['G', 'W', 'S', 'B', 'E'],
       items: [],
       checked_items: [],
@@ -88,11 +88,6 @@ export default {
     }
   },
   mounted() {
-    this.item_data = require('../db/item.json');
-    this.quest_world1_data = require('../db/world1.json');
-    this.quest_week_data = require('../db/week.json');
-    this.quest_event_data = require('../db/event.json');
-    this.quest_unknown_data = require('../db/unknown.json');
     this.parseItems();
     this.showItems = true;
     this.showQuests = true;
