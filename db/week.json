@@ -35,21 +35,21 @@
             }
         ]
     },
-    "Bow": {
-        "num": "Bow",
-        "name": "火曜クエスト(?)",
+    "Tue": {
+        "num": "Tue",
+        "name": "火曜クエスト",
         "quest": [
             {
-                "num": "Bow-1",
-                "name": "弓杖 初級"
+                "num": "Tue-1",
+                "name": "弓杖のもと 初級"
             },
             {
-                "num": "Bow-2",
-                "name": "弓杖 中級"
+                "num": "Tue-2",
+                "name": "弓杖のもと 中級"
             },
             {
-                "num": "Bow-3",
-                "name": "弓杖 上級"
+                "num": "Tue-3",
+                "name": "弓杖のもと 上級"
             }
         ]
     },
