@@ -691,11 +691,75 @@
         ]
     },
     {
-        "num": "B-4",
+        "num": "E-1",
+        "group": ["W", "E"],
+        "name": "願歌の晶石",
+        "quest": ["E-1-NH"]
+    },
+    {
+        "num": "E-2",
+        "group": ["W", "E"],
+        "name": "願歌の中晶石",
+        "quest": ["E-1-H"]
+    },
+    {
+        "num": "E-3",
+        "group": ["W", "E"],
+        "name": "豪雷の晶石",
+        "quest": ["E-2-NHE"]
+    },
+    {
+        "num": "E-4",
+        "group": ["W", "E"],
+        "name": "豪雷の中晶石",
+        "quest": ["E-2-HE"]
+    },
+    {
+        "num": "E-5",
+        "group": ["W", "E"],
+        "name": "陽弦の晶石",
+        "quest": ["E-3-NH"]
+    },
+    {
+        "num": "E-6",
+        "group": ["W", "E"],
+        "name": "陽弦の中晶石",
+        "quest": ["E-3-H"]
+    },
+    {
+        "num": "E-7",
+        "group": ["W", "E"],
+        "name": "浴硝の晶石",
+        "quest": ["E-4-NHE"]
+    },
+    {
+        "num": "E-8",
+        "group": ["W", "E"],
+        "name": "浴硝の中晶石",
+        "quest": ["E-4-HE"]
+    },
+    {
+        "num": "E-9",
         "group": ["B", "E"],
         "name": "蝙蝠の尖爪",
         "quest": [
             "E-5-NH:発掘せよ！太古の叡智"
         ]
+    },
+    {
+        "num": "E-10",
+        "group": ["W", "E"],
+        "name": "誠刀の晶石",
+        "quest": ["E-6-NHE"]
+    },
+    {
+        "num": "E-11",
+        "group": ["W", "E"],
+        "name": "誠刀の中晶石",
+        "quest": [
+            "E-6-HE"
+        ]
     }
+
+
 ]
