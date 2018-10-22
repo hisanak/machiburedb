@@ -2,13 +2,14 @@
   <div class="mbc-items">
     <h1>素材名から検索</h1>
     <div class="sel_list">
-      <div class="sel_item" v-for="group in groups" :key="group.id">
+      <div class="sel_group" v-for="group in groups" :key="group.id">
         <div class="item_bundle">
           <input type="checkbox" :id="group.id" :value="group.id" v-model="checked_groups" />
           <label :for="group.id">{{ group.name }}</label>
         </div>
       </div>
     </div>
+    <br />
     <div class="sel_list" v-if="showItems">
       <div class="sel_item" v-for="item in items" :key="item.item_id">
         <div class="item_bundle">
@@ -43,8 +44,8 @@ export default {
       quest_world1_data: [],
       quest_week_data: [],
       quest_event_data: [],
-      groups: [{name: 'ブキ素材', id: 'W'}, {name: 'スピリット素材', id: 'S'}, {name: '玉素材', id: 'B'}, {name: 'イベント素材', id: 'E'}],
-      checked_groups: [],
+      groups: [{name: '汎用素材', id: 'G'}, {name: 'ブキ素材', id: 'W'}, {name: 'スピリット素材', id: 'S'}, {name: '玉素材', id: 'B'}, {name: 'イベント素材', id: 'E'}],
+      checked_groups: ['G', 'W', 'S', 'B', 'E'],
       items: [],
       checked_items: [],
       quests: [],
@@ -67,6 +68,16 @@ export default {
     }
   },
   watch: {
+    checked_groups: {
+      handler: function(newValuse) {
+        this.showQuests = false;
+        this.showItems = false;
+        this.parseItems();
+        this.checked_items = [];
+        this.showItems = true;
+        this.showQuests = true;
+      }
+    },
     checked_items: {
       handler: function(newValue) {
         this.showQuests = false;
@@ -88,13 +99,32 @@ export default {
   },
   methods: {
     parseItems: function() {
+      this.items = [];
+      var items = [];
       for (let i = 0; i < this.item_data.length; i++) {
         const item = this.item_data[i];
-//        console.log(item.name);
-        if (item.quest.length > 0) {
-          this.items.push({sel_id: 'sel' + i, item_id: item.num, item_name: item.name});
+        if (this.judgeGroup(item.group) && item.quest.length > 0) {
+          items.push({sel_id: 'sel' + i, item_id: item.num, item_name: item.name});
         }
       }
+      this.items = items;
+    },
+    judgeGroup: function(group) {
+      const inGroup = function(group, groups) {
+        for (let i = 0; i < groups.length; i++) {
+          if (group == groups[i]) {
+            return true;
+          }
+        }
+        return false;
+      };
+
+      for (let i = 0; i < group.length; i++) {
+        if (!inGroup(group[i], this.checked_groups)) {
+          return false;
+        }
+      }
+      return true;
     },
     narrowQuests: function() {
       if (this.checked_items.length == 0) {
@@ -258,6 +288,14 @@ div.sel_list:after {
   height: 0px;
   visibility: hidden;
   content: ".";
+}
+div.sel_group {
+  width: 25%;
+  height: auto;
+  float: left;
+  vertical-align: middle;
+  display: table-cell;
+  border: 0px #C0C0C0 solid;
 }
 div.sel_item {
   width: 25%;
