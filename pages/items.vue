@@ -3,7 +3,7 @@
     <h1>素材名から検索</h1>
     <div class="sel_list">
       <div class="sel_group" v-for="group in groups" :key="group.id">
-        <div class="item_bundle">
+        <div class="item_bundle chkbox_group">
           <input type="checkbox" :id="group.id" :value="group.id" v-model="checked_groups" />
           <label :for="group.id">{{ group.name }}</label>
         </div>
@@ -13,8 +13,8 @@
     <div class="sel_list" v-if="showItems">
       <div class="sel_item" v-for="item in items" :key="item.item_id">
         <div class="item_bundle">
-          <input type="checkbox" :id="item.sel_id" :value="item.sel_id" v-model="checked_items" />
-          <label :for="item.sel_id">{{ item.item_name }}</label>
+          <input type="checkbox" class="chkbox_item" :id="item.sel_id" :value="item.sel_id" v-model="checked_items" />
+          <label class="chk_item" :for="item.sel_id">{{ item.item_name }}</label>
         </div>
       </div>
     </div>
@@ -292,6 +292,37 @@ div.sel_group {
   display: table-cell;
   border: 0px #C0C0C0 solid;
 }
+
+.chkbox_group {
+  margin: 0px 0px 10px 20px;
+}
+.chkbox_group label {
+  width: 100%;
+  height: 100%;
+  padding-left: 3vw;
+  font-size: 2.4vw;
+  position: relative;
+}
+.chkbox_group label:before {
+  content: '';
+  width: 2.2vw;
+  height: 2.2vw;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  box-shadow: inset 1px 2px 3px 0px #000;
+  border-radius: 2px 2px 2px 2px;
+}
+.chkbox_group input[type=checkbox] {
+  display: none;
+}
+.chkbox_group input[type=checkbox]:checked + label:before {
+  content: '\2713';
+  font-size: 2.2vw;
+  color: #fff;
+  background-color: #06f;
+}
+
 div.sel_item {
   width: 25%;
   height: auto;
@@ -301,9 +332,25 @@ div.sel_item {
   border: 1px #C0C0C0 solid;
 }
 div.item_bundle {
-  width: auto;
-  height: auto;
-  padding-left: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+label.chk_item {
+  width: 100%;
+  height: 100%;
+  padding: 2px 0px 2px 0px;
+  margin: 0px;
+  font-size: 2.2vw;
+  text-align: center;
+}
+input[type=checkbox].chkbox_item {
+  display: none;
+}
+input[type=checkbox].chkbox_item:checked + label.chk_item {
+  color: #fff;
+  background: #06f;
 }
 div.quest_list {
   align: center;

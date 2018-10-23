@@ -6,7 +6,7 @@ module.exports = {
     title: 'マチブレ素材ドロップ検索',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=360, initial-scale=1, maximum-scale=2' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 //      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'マチガイブレイカーの非公式攻略Webページです。おもに素材ドロップに関する情報を提供します。' }
     ],
