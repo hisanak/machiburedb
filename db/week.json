@@ -1,108 +1,108 @@
 {
     "Sun": {
-        "num": "Sun",
+        "id": "Sun",
         "name": "日曜クエスト",
         "quest": [
             {
-                "num": "Sun-1",
+                "id": "Sun-1",
                 "name": "時とレアなり 初級"
             },
             {
-                "num": "Sun-2",
+                "id": "Sun-2",
                 "name": "時とレアなり 中級"
             },
             {
-                "num": "Sun-3",
+                "id": "Sun-3",
                 "name": "時とレアなり 上級"
             }
         ]
     },
     "Mon": {
-        "num": "Mon",
+        "id": "Mon",
         "name": "月曜クエスト",
         "quest": [
             {
-                "num": "Mon-1",
+                "id": "Mon-1",
                 "name": "剣斧のもと 初級"
             },
             {
-                "num": "Mon-2",
+                "id": "Mon-2",
                 "name": "剣斧のもと 中級"
             },
             {
-                "num": "Mon-3",
+                "id": "Mon-3",
                 "name": "剣斧のもと 上級"
             }
         ]
     },
     "Tue": {
-        "num": "Tue",
+        "id": "Tue",
         "name": "火曜クエスト",
         "quest": [
             {
-                "num": "Tue-1",
+                "id": "Tue-1",
                 "name": "弓杖のもと 初級"
             },
             {
-                "num": "Tue-2",
+                "id": "Tue-2",
                 "name": "弓杖のもと 中級"
             },
             {
-                "num": "Tue-3",
+                "id": "Tue-3",
                 "name": "弓杖のもと 上級"
             }
         ]
     },
     "Bok": {
-        "num": "Bok",
+        "id": "Bok",
         "name": "水曜クエスト(?)",
         "quest": [
             {
-                "num": "Bok-1",
+                "id": "Bok-1",
                 "name": "本楽 初級"
             },
             {
-                "num": "Bok-2",
+                "id": "Bok-2",
                 "name": "本楽 中級"
             },
             {
-                "num": "Bok-3",
+                "id": "Bok-3",
                 "name": "本楽 上級"
             }
         ]
     },
     "Spr": {
-        "num": "Spr",
+        "id": "Spr",
         "name": "木曜クエスト(?)",
         "quest": [
             {
-                "num": "Spr-1",
+                "id": "Spr-1",
                 "name": "スピリット 初級"
             },
             {
-                "num": "Spr-2",
+                "id": "Spr-2",
                 "name": "スピリット 中級"
             },
             {
-                "num": "Spr-3",
+                "id": "Spr-3",
                 "name": "スピリット 上級"
             }
         ]
     },
     "Sat": {
-        "num": "Sat",
+        "id": "Sat",
         "name": "土曜クエスト",
         "quest": [
             {
-                "num": "Sat-1",
+                "id": "Sat-1",
                 "name": "オールレア素材 初級"
             },
             {
-                "num": "Sat-2",
+                "id": "Sat-2",
                 "name": "オールレア素材 中級"
             },
             {
-                "num": "Sat-3",
+                "id": "Sat-3",
                 "name": "オールレア素材 上級"
             }
         ]

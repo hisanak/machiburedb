@@ -99,7 +99,7 @@ export default {
       for (let i = 0; i < this.item_data.length; i++) {
         const item = this.item_data[i];
         if (this.judgeGroup(item.group) && item.quest.length > 0) {
-          items.push({sel_id: 'sel' + i, item_id: item.num, item_name: item.name});
+          items.push({sel_id: 'sel' + i, item_id: item.id, item_name: item.name});
         }
       }
       this.items = items;
