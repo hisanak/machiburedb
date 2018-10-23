@@ -6,7 +6,8 @@ json 形式でファイルに書き込んでいます。
 ## 素材 DB
 item.json の表現方法は以下の通り。
 key の後ろに * が付いているのは必須な項目。
-```json
+```
+# item.json
 [
     {
         "id*": "素材 ID (他と違えば何でも良い)",
@@ -24,7 +25,8 @@ key の後ろに * が付いているのは必須な項目。
 通常クエストは world1.json、曜日クエストは week.json、  
 期間限定のイベントクエストは event.json に記述。
 各素材のドロップ先としては表示されるが実在しないイベントは unknown.json に記述。  
-```world.json
+```
+# world1.json
 [
     {
         "id": "ステージ ID(WORLD-STAGE の順に記述)",
