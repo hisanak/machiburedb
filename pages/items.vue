@@ -18,17 +18,15 @@
         </div>
       </div>
     </div>
-    <div class="quest_list">
-      <div class="seled_quest" v-if="showQuests">
-        <div v-if="showNotCompleted">
-          <p><strong>※未完成(更新中)</strong></p>
-        </div>
-        <div v-if="quest_ids.length == 0">
-          <p>No Result</p>
-        </div>
-        <div v-else v-for="quest in quests" :key="quest.id">
-            <p>{{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
-        </div>
+    <div class="quest_list" v-if="showQuests">
+      <div v-if="showNotCompleted">
+        <p><strong>※未完成(更新中)</strong></p>
+      </div>
+      <div v-if="quest_ids.length == 0">
+        <p>No Result</p>
+      </div>
+      <div v-else v-for="quest in quests" :key="quest.id">
+        <p class="quest_item">{{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
       </div>
     </div>
   </div>
@@ -360,7 +358,8 @@ div.quest_list {
   border: 2px #000000 solid;
   padding: 4px;
 }
-div.seled_quest {
+p.quest_item {
+  font-size: 2.2vw;
 }
 </style>
 
