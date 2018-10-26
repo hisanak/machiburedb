@@ -20,10 +20,10 @@
     </div>
     <div class="quest_list" v-if="showQuests">
       <div v-if="showNotCompleted">
-        <p><strong>※未完成(更新中)</strong></p>
+        <p class="quest_item"><strong>※未完成(更新中)</strong></p>
       </div>
       <div v-if="quest_ids.length == 0">
-        <p>No Result</p>
+        <p class="quest_item">No Result</p>
       </div>
       <div v-else v-for="quest in quests" :key="quest.id">
         <p class="quest_item">{{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
