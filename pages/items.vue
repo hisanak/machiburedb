@@ -305,7 +305,7 @@ div.sel_group {
   content: '';
   width: 2.2vw;
   height: 2.2vw;
-  display: inline-block;
+  display: block;
   position: absolute;
   margin-top: 0.5vw;
   margin-left: 0.3vw;
@@ -330,6 +330,8 @@ div.sel_item {
   vertical-align: middle;
   display: table-cell;
   border: 1px #C0C0C0 solid;
+  margin: 0px;
+  padding: 0px;
 }
 div.item_bundle {
   width: 100%;
@@ -340,8 +342,8 @@ div.item_bundle {
 label.chk_item {
   width: 100%;
   height: 100%;
-  padding: 2px 0px 2px 0px;
-  margin: 0px;
+  padding: 0.2vw 0vw 0.2vw 0vw;
+  margin: 0vw;
   font-size: 2.2vw;
   text-align: center;
 }
