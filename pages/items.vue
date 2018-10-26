@@ -361,7 +361,7 @@ div.quest_list {
   padding: 4px;
 }
 p.quest_item {
-  font-size: 2.2vw;
+  font-size: 2.8vw;
 }
 </style>
 
