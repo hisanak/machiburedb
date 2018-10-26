@@ -3,9 +3,9 @@
     <h1>素材名から検索</h1>
     <div class="sel_list">
       <div class="sel_group" v-for="group in groups" :key="group.id">
-        <div class="item_bundle chkbox_group">
-          <input type="checkbox" :id="group.id" :value="group.id" v-model="checked_groups" />
-          <label :for="group.id">{{ group.name }}</label>
+        <div class="item_bundle">
+          <input type="checkbox" class="chkbox_group" :id="group.id" :value="group.id" v-model="checked_groups" />
+          <label class="" :for="group.id">{{ group.name }}</label>
         </div>
       </div>
     </div>
@@ -290,35 +290,31 @@ div.sel_group {
   display: table-cell;
   border: 0px #C0C0C0 solid;
 }
-
-.chkbox_group {
-  margin: 0px 0px 10px 20px;
-}
-.chkbox_group label {
+.sel_group label {
   width: 100%;
   height: 100%;
   padding-left: 3vw;
   font-size: 2.4vw;
   position: relative;
 }
-.chkbox_group label:before {
+.sel_group label:before {
   content: '';
   width: 2.2vw;
   height: 2.2vw;
   display: block;
   position: absolute;
-  margin-top: 0.5vw;
+  margin-top: 1vw;
   margin-left: 0.3vw;
   left: 0;
   box-shadow: inset 1px 2px 3px 0px #000;
   border-radius: 2px 2px 2px 2px;
 }
-.chkbox_group input[type=checkbox] {
+input[type=checkbox].chkbox_group {
   display: none;
 }
-.chkbox_group input[type=checkbox]:checked + label:before {
+input[type=checkbox].chkbox_group:checked + label:before {
   content: '\2713';
-  font-size: 2.2vw;
+  font-size: 1.3vw;
   color: #fff;
   background-color: #06f;
 }
@@ -334,21 +330,22 @@ div.sel_item {
   padding: 0px;
 }
 div.item_bundle {
+  display: inline-block;
   width: 100%;
   height: 100%;
-  padding: 0px;
-  margin: 0px;
 }
 label.chk_item {
   width: 100%;
   height: 100%;
-  padding: 0.2vw 0vw 0.2vw 0vw;
   margin: 0vw;
   font-size: 2.2vw;
+  vertical-align: middle;
   text-align: center;
 }
 input[type=checkbox].chkbox_item {
   display: none;
+  margin: 0px;
+  padding: 0px;
 }
 input[type=checkbox].chkbox_item:checked + label.chk_item {
   color: #fff;
