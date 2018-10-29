@@ -303,7 +303,7 @@ div.sel_group {
   height: 2.2vw;
   display: block;
   position: absolute;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
   margin-left: 0.3vw;
   left: 0;
   box-shadow: inset 1px 2px 3px 0px #000;
