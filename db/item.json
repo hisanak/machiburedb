@@ -288,7 +288,7 @@
         "group": ["W"],
         "name": "狩人の晶石",
         "quest": [
-            "1-2-3-NH", "1-4-3-NH", "1-6-3-NH", "1-8-2-NH", "1-10-1-NH", "W-Tue-1-N", "W-Tue-2-N", "W-Tue-3-N"
+            "1-2-4-NH", "1-4-3-NH", "1-6-3-NH", "1-8-2-NH", "1-10-1-NH", "W-Tue-1-N", "W-Tue-2-N", "W-Tue-3-N"
 
         ]
     },
@@ -799,50 +799,56 @@
         ]
     },
     {
-        "id": "B-1",
+        "id": "b-2",
         "group": ["B"],
+        "name": "はじまりの本",
+        "quest": ["1-2-5-NH"]
+    },
+    {
+        "id": "B-1",
+        "group": ["B", "E"],
         "name": "願いの短冊",
         "quest": ["E-1-H"]
     },
     {
         "id": "B-2",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "常楽のミョルニル",
         "quest": ["E-2-HE"]
     },
     {
         "id": "B-3",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "怪力の高みミョルニル",
         "quest": ["E-2-E"]
     },
     {
         "id": "B-4",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "暑さが放つ色気アポロン",
         "quest": ["E-3-H"]
     },
     {
         "id": "B-5",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "常夏の秘歌アルモニカ",
         "quest": ["E-4-HE"]
     },
     {
         "id": "B-6",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "風に乗せた旋律アルモニカ",
         "quest": ["E-4-E"]
     },
     {
         "id": "B-7",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "正宗",
         "quest": ["E-6-HE"]
     },
     {
         "id": "B-8",
-        "group": ["B"],
+        "group": ["B", "E"],
         "name": "銘刀正宗",
         "quest": ["E-6-E"]
     }
