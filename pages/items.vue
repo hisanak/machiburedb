@@ -26,7 +26,7 @@
         <p class="quest_item">No Result</p>
       </div>
       <div v-else v-for="quest in quests" :key="quest.id">
-        <p class="quest_item">{{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
+        <p class="quest_item"> ({{ checked_items.length }}/{{ quest.items.length }}) {{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
       </div>
     </div>
   </div>
@@ -151,25 +151,25 @@ export default {
           if (qid[0] == '1') {
             const l1 = parseInt(qid[1], 10) - 1;
             const l2 = parseInt(qid[2], 10) - 1;
-            let quest = {name: this.quest_world1_data[l1].name + ': ' + this.quest_world1_data[l1].quest[l2].name};
+            let quest = {name: this.quest_world1_data[l1].name + ': ' + this.quest_world1_data[l1].quest[l2].name, items: this.quest_world1_data[l1].quest[l2].items};
             this.parseLevels(quest, qid[3]);
             quests.push(quest);
           }
           else if (qid[0] == 'E') {
             const l1 = parseInt(qid[1], 10) - 1;
-            let quest = {name: this.quest_event_data[l1].name};
+            let quest = {name: this.quest_event_data[l1].name, items: this.quest_event_data[l1].quest[0].items};
             this.parseLevels(quest, qid[2]);
             quests.push(quest);
           }
           else if (qid[0] == 'W') {
             const l2 = parseInt(qid[2], 10) - 1;
-            let quest = {name: this.quest_week_data[qid[1]].name + ': ' + this.quest_week_data[qid[1]].quest[l2].name};
+            let quest = {name: this.quest_week_data[qid[1]].name + ': ' + this.quest_week_data[qid[1]].quest[l2].name, items: this.quest_week_data[qid[1]].quest[l2].items};
             this.parseLevels(quest, qid[3]);
             quests.push(quest);
           }
           else if (qid[0] == 'U') {
             const l1 = parseInt(qid[1], 10) - 1;
-            let quest = {name: "不明: " + this.quest_unknown_data[l1].name};
+            let quest = {name: "不明: " + this.quest_unknown_data[l1].name, items: this.quest_unknown_data[l1].quest[0].items};
             this.parseLevels(quest, qid[2]);
             quests.push(quest);
           }
