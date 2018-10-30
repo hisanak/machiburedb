@@ -3,18 +3,21 @@
         "id": "1",
         "name": "偽英???双龍",
         "reward": "Unknown",
-        "term": []
+        "term": [],
+        "quest": [{"id": "U-1-NHE"}]
     },
     {
         "id": "2",
         "name": "邪を???刃文",
         "reward": "Unknown",
-        "term": []
+        "term": [],
+        "quest": [{"id": "U-2-NHE"}]
     },
     {
         "id": "3",
         "name": "賞賛???",
         "reward": "Unknown",
-        "term": []
+        "term": [],
+        "quest": [{"id": "U-3-NH"}]
     }
 ]
