@@ -12,6 +12,7 @@
   },
   "scripts": {
     "dev": "nuxt",
+    "qgen": "bash scripts/gen_quest.sh",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
