@@ -162,8 +162,9 @@ export default {
             quests.push(quest);
           }
           else if (qid[0] == 'W') {
+            const l1 = {'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thr': 4, 'Fri': 5, 'Sat': 6}[qid[1]];
             const l2 = parseInt(qid[2], 10) - 1;
-            let quest = {name: this.quest_week_data[qid[1]].name + ': ' + this.quest_week_data[qid[1]].quest[l2].name, items: this.quest_week_data[qid[1]].quest[l2].items};
+            let quest = {name: this.quest_week_data[l1].name + ': ' + this.quest_week_data[l1].quest[l2].name, items: this.quest_week_data[l1].quest[l2].items};
             this.parseLevels(quest, qid[3]);
             quests.push(quest);
           }
