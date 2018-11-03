@@ -1,127 +1,128 @@
 [
     {
-        "id": "Sun",
+        "id": "W-Sun",
         "name": "日曜クエスト",
         "quest": [
             {
-                "id": "W-Sun-1",
-                "name": "時とレアなり 初級"
+                "name": "時とレアなり 初級",
+                "level": "N"
             },
             {
-                "id": "W-Sun-2",
-                "name": "時とレアなり 中級"
+                "name": "時とレアなり 中級",
+                "level": "N"
             },
             {
-                "id": "W-Sun-3",
-                "name": "時とレアなり 上級"
+                "name": "時とレアなり 上級",
+                "level": "N"
             }
         ]
     },
     {
-        "id": "Mon",
+        "id": "W-Mon",
         "name": "月曜クエスト",
         "quest": [
             {
-                "id": "W-Mon-1",
-                "name": "剣斧のもと 初級"
+                "name": "剣斧のもと 初級",
+                "level": "N"
             },
             {
-                "id": "W-Mon-2",
-                "name": "剣斧のもと 中級"
+                "name": "剣斧のもと 中級",
+                "level": "N"
             },
             {
-                "id": "W-Mon-3",
-                "name": "剣斧のもと 上級"
+                "name": "剣斧のもと 上級",
+                "level": "N"
+
             }
         ]
     },
     {
-        "id": "Tue",
+        "id": "W-Tue",
         "name": "火曜クエスト",
         "quest": [
             {
-                "id": "W-Tue-1",
-                "name": "弓杖のもと 初級"
+                "name": "弓杖のもと 初級",
+                "level": "N"
             },
             {
-                "id": "W-Tue-2",
-                "name": "弓杖のもと 中級"
+                "name": "弓杖のもと 中級",
+                "level": "N"
             },
             {
-                "id": "W-Tue-3",
-                "name": "弓杖のもと 上級"
+                "name": "弓杖のもと 上級",
+                "level": "N"
             }
         ]
     },
     {
-        "id": "Wed",
+        "id": "W-Wed",
         "name": "水曜クエスト",
         "quest": [
             {
-                "id": "W-Wed-1",
-                "name": "本楽器のもと 初級"
+                "name": "本楽器のもと 初級",
+                "level": "N"
             },
             {
-                "id": "W-Wed-2",
-                "name": "本楽器のもと 中級"
+                "name": "本楽器のもと 中級",
+                "level": "N"
             },
             {
-                "id": "W-Wed-3",
-                "name": "本楽器のもと 上級"
+                "name": "本楽器のもと 上級",
+                "level": "N"
             }
         ]
     },
     {
-        "id": "Thr",
+        "id": "W-Thr",
         "name": "木曜クエスト",
         "quest": [
             {
-                "id": "W-Thr-1",
-                "name": "スピリットのもと 初級"
+                "name": "スピリットのもと 初級",
+                "level": "N"
             },
             {
-                "id": "W-Thr-2",
-                "name": "スピリットのもと 中級"
+                "name": "スピリットのもと 中級",
+                "level": "N"
             },
             {
-                "id": "W-Thr-3",
-                "name": "スピリットのもと 上級"
+                "name": "スピリットのもと 上級",
+                "level": "N"
             }
         ]
     },
     {
-        "id": "Fri",
+        "id": "W-Fri",
         "name": "金曜クエスト",
         "quest": [
             {
-                "id": "W-Fri-1",
-                "name": "ゴールドラッシュ 初級"
+                "name": "ゴールドラッシュ 初級",
+                "level": "N"
             },
             {
-                "id": "W-Fri-2",
-                "name": "ゴールドラッシュ 中級"
+                "name": "ゴールドラッシュ 中級",
+                "level": "N"
             },
             {
-                "id": "W-Fri-3",
-                "name": "ゴールドラッシュ 上級"
+                "name": "ゴールドラッシュ 上級",
+                "level": "N"
             }
         ]
     },
     {
-        "id": "Sat",
+        "id": "W-Sat",
         "name": "土曜クエスト",
         "quest": [
             {
-                "id": "W-Sat-1",
-                "name": "オールレア素材 初級"
+                "name": "オールレア素材 初級",
+                "level": "N"
             },
             {
-                "id": "W-Sat-2",
-                "name": "オールレア素材 中級"
+                "name": "オールレア素材 中級",
+                "level": "N"
             },
             {
-                "id": "W-Sat-3",
-                "name": "オールレア素材 上級"
+                "name": "オールレア素材 上級",
+                "level": "N"
             }
         ]
     }

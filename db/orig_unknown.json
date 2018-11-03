@@ -1,23 +1,38 @@
 [
     {
-        "id": "1",
+        "id": "U-1",
         "name": "偽英???双龍",
         "reward": "Unknown",
         "term": [],
-        "quest": [{"id": "U-1-NHE"}]
+        "quest": [
+            {
+                "name": "偽英???双龍",
+                "level": "NHE"
+            }
+        ]
     },
     {
-        "id": "2",
+        "id": "U-2",
         "name": "邪を???刃文",
         "reward": "Unknown",
         "term": [],
-        "quest": [{"id": "U-2-NHE"}]
+        "quest": [
+            {
+                "name": "邪を???刃文",
+                "level": "NHE"
+            }
+        ]
     },
     {
-        "id": "3",
+        "id": "U-3",
         "name": "賞賛???",
         "reward": "Unknown",
         "term": [],
-        "quest": [{"id": "U-3-NH"}]
+        "quest": [
+            {
+                "name": "賞賛???",
+                "level": "NH"
+            }
+        ]
     }
 ]
