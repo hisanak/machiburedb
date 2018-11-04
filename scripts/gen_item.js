@@ -11,7 +11,11 @@ var result = require(args[3]);
 var parse_quest_level = function(quest) {
   var re = new RegExp(/^([0-9\-a-zA-z]+)\-([NHE]+)$/);
   var m = quest.match(re);
-  var l = m[2].split('').map(x => m[1] + x);
+  if (m === null) {
+    console.log('quest:', quest, 'does not match to pattern');
+    return [];
+  }
+  var l = m[2].split('').map(x => m[1] + '-' + x);
   return l;
 }
 
@@ -53,23 +57,30 @@ var search_quest_in_item = function(quest, item) {
   return ret;
 }
 
-/*
-for (let i = 0; i < stages.length; i++) {
-  let quests = stages[i].quest;
-  for (let j = 0; j < quests.length; j++) {
-    let quest = quests[j];
-    quest.items = [];
-    for (let k = 0; k < items.length; k++) {
-      let item = items[k];
-      let q = search_quest_in_item(quest.id, item);
-      quest.items = quest.items.concat(q);
+var find_quest_for_each_item = function(items, output) {
+  for (var i = 0; i < output.length; i++) {
+    var stage = output[i];
+    for (var j = 0; j < stage.ex_quest.length; j++) {
+      var quest = stage.ex_quest[j];
+      quest.items = [];
+      for (var k = 0; k < items.length; k++) {
+        var item = items[k];
+        for (var l = 0; l < item.quest.length; l++) {
+          var iq = parse_quest_level(item.quest[l]);
+          for (var m = 0; m < iq.length; m++) {
+//            console.log(iq[m], quest.id);
+            if (iq[m] === quest.id) {
+              quest.items.push(item.id);
+            }
+          }
+        }
+      }
     }
-    console.log("quest:", quest.name, ", items:",  quest.items);
   }
 }
-*/
-parse_stages(stages, result);
 
+parse_stages(stages, result);
+find_quest_for_each_item(items, result);
 
 
 var fs = require('fs');
