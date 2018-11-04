@@ -4,20 +4,6 @@ if (args.length != 5) {
   process.exit(1);
 }
 
-var items = require(args[2]);
-var stages = require(args[3]);
-var result = require(args[3]);
-
-var parse_quest_level = function(quest) {
-  var re = new RegExp(/^([0-9\-a-zA-z]+)\-([NHE]+)$/);
-  var m = quest.match(re);
-  if (m === null) {
-    console.log('quest:', quest, 'does not match to pattern');
-    return [];
-  }
-  var l = m[2].split('').map(x => m[1] + '-' + x);
-  return l;
-}
 
 var parse_stages = function(input, output) {
   for (var i = 0; i < input.length; i++) {
@@ -25,13 +11,16 @@ var parse_stages = function(input, output) {
     var t = [];
     for (var j = 0; j < stage.quest.length; j++) {
       var quest = stage.quest[j];
-      if (!quest.level) {
-        quest.level = "NH";
+      var t = output[i].quest[j].level = {};
+      var levels = output[i].quest[j].levels;
+      if (levels == undefined) {
+        levels = output[i].quest[j].levels = "NH";
       }
-      var quests = quest.level.split('').map(x => new Object({id: `${stage.id}-${j+1}-${x}`, name: quest.name}));
-      t = t.concat(quests);
+      for (var k = 0; k < levels.length; k++) {
+        var l = levels[k];
+        t[l] = {id: `${stage.id}-${j+1}-${l}`, items: []};
+      }
     }
-    output[i].ex_quest = t;
   }
 }
 
@@ -60,17 +49,16 @@ var search_quest_in_item = function(quest, item) {
 var find_quest_for_each_item = function(items, output) {
   for (var i = 0; i < output.length; i++) {
     var stage = output[i];
-    for (var j = 0; j < stage.ex_quest.length; j++) {
-      var quest = stage.ex_quest[j];
-      quest.items = [];
-      for (var k = 0; k < items.length; k++) {
-        var item = items[k];
-        for (var l = 0; l < item.quest.length; l++) {
-          var iq = parse_quest_level(item.quest[l]);
-          for (var m = 0; m < iq.length; m++) {
-//            console.log(iq[m], quest.id);
-            if (iq[m] === quest.id) {
-              quest.items.push(item.id);
+    for (var j = 0; j < stage.quest.length; j++) {
+      var quest = stage.quest[j];
+      for (var k = 0; k < quest.levels.length; k++) {
+        var level = quest.level[quest.levels[k]];
+        for (var l = 0; l < items.length; l++) {
+          var item = items[l];
+          for (var m = 0; m < item.ex_quest.length; m++) {
+            var iq = item.ex_quest[m];
+            if (iq === level.id) {
+              level.items.push(item.id);
             }
           }
         }
@@ -78,6 +66,10 @@ var find_quest_for_each_item = function(items, output) {
     }
   }
 }
+
+var items = require(args[2]);
+var stages = require(args[3]);
+var result = JSON.parse(JSON.stringify(stages));
 
 parse_stages(stages, result);
 find_quest_for_each_item(items, result);
