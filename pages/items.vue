@@ -22,11 +22,11 @@
       <div v-if="showNotCompleted">
         <p class="quest_item"><strong>※未完成(更新中)</strong></p>
       </div>
-      <div v-if="quest_ids.length == 0">
+      <div v-if="quests.length == 0">
         <p class="quest_item">No Result</p>
       </div>
       <div v-else v-for="quest in quests" :key="quest.id">
-        <p class="quest_item"> ({{ checked_items.length }}/{{ quest.items.length }}) {{ quest.name }}（<span v-if="quest.n" style="color: #606060;">{{ quest.n }}</span>{{ quest.n_h }}<span v-if="quest.h" style="color: #C00000;">{{ quest.h }}</span>{{ quest.h_e }}<span v-if="quest.e" style="color: #800080;">{{ quest.e }}</span>）</p>
+        <p class="quest_item"> ({{ checked_items.length }}/{{ quest.items.length }}) {{ quest.name }}（<span :style="colors[quest.level]">{{ levels[quest.level] }}</span>）</p>
       </div>
     </div>
   </div>
@@ -47,7 +47,8 @@ export default {
       items: [],
       checked_items: [],
       quests: [],
-      quest_ids: [],
+      levels: {N: 'ノーマル', H: 'ハード', E: 'エクストラ'},
+      colors: {N: 'color: #606060', H: 'color: #C00000', E: 'color: #800080'},
       showItems: false,
       showQuests: false,
       showNotCompleted: false,
@@ -79,8 +80,7 @@ export default {
     checked_items: {
       handler: function(newValue) {
         this.showQuests = false;
-        this.narrowQuests();
-        this.parseQuests();
+        this.quests = this.narrowQuests(this.checked_items);
         this.showQuests = true;
       }
     }
@@ -119,74 +119,140 @@ export default {
       }
       return true;
     },
-    narrowQuests: function() {
-      if (this.checked_items.length == 0) {
-        this.quest_ids = [];
-        return;
+    narrowQuests: function(checked_items) {
+      var self = this;
+      if (checked_items.length == 0) {
+        return [];
       }
-      this.quest_ids = this.getQuests(0);
-      for (let i = 1; i < this.checked_items.length; i++) {
-        const b = new Set(this.getQuests(i));
-        const a = new Set(this.quest_ids);
-        const a_and_b = new Set([...a].filter(e => (b.has(e))));
-        this.quest_ids = [...a_and_b];
+      const getQuests = function(checked_item) {
+        // 'selXYZ' -> int('XYZ')
+        const id = parseInt(checked_item.slice(3), 10);
+        if (id === undefined) {
+          consoe.log(checked_item, checked_item.slice(3));
+        }
+        return self.item_data[id].ex_quest;
       }
-//      console.log(this.quests);
-    },
-    getQuests: function(index) {
-      // 'selXYZ' -> int('XYZ')
-      const id = parseInt(this.checked_items[index].slice(3), 10);
-      const raw_quests = this.item_data[id].quest;
-      const quests = raw_quests.map(x => x.split(':')[0]);
-      return quests;
-    },
-    parseQuests: function() {
-      this.showNotCompleted = false;
-      this.quests = [];
-      var quests = [];
-      for (let i = 0; i < this.quest_ids.length; i++) {
-        const quest_id = this.quest_ids[i];
-        const qid = quest_id.split('-');
-        try {
-          if (qid[0] == '1') {
-            const l1 = parseInt(qid[1], 10) - 1;
-            const l2 = parseInt(qid[2], 10) - 1;
-            let quest = {name: this.quest_world1_data[l1].name + ': ' + this.quest_world1_data[l1].quest[l2].name, items: this.quest_world1_data[l1].quest[l2].items};
-            this.parseLevels(quest, qid[3]);
-            quests.push(quest);
-          }
-          else if (qid[0] == 'E') {
-            const l1 = parseInt(qid[1], 10) - 1;
-            let quest = {name: this.quest_event_data[l1].name, items: this.quest_event_data[l1].quest[0].items};
-            this.parseLevels(quest, qid[2]);
-            quests.push(quest);
-          }
-          else if (qid[0] == 'W') {
-            const l1 = {'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thr': 4, 'Fri': 5, 'Sat': 6}[qid[1]];
-            const l2 = parseInt(qid[2], 10) - 1;
-            let quest = {name: this.quest_week_data[l1].name + ': ' + this.quest_week_data[l1].quest[l2].name, items: this.quest_week_data[l1].quest[l2].items};
-            this.parseLevels(quest, qid[3]);
-            quests.push(quest);
-          }
-          else if (qid[0] == 'U') {
-            const l1 = parseInt(qid[1], 10) - 1;
-            let quest = {name: "不明: " + this.quest_unknown_data[l1].name, items: this.quest_unknown_data[l1].quest[0].items};
-            this.parseLevels(quest, qid[2]);
-            quests.push(quest);
-          }
-          else if (qid[0] == 'M') {
-            this.showNotCompleted = true;
+      const getIntersection = function(checked_items) {
+        console.log(checked_items);
+        var qids = getQuests(checked_items[0]);
+        for (let i = 1; i < checked_items.length; i++) {
+          const b = new Set(getQuests(checked_items[i]));
+          const a = new Set(qids);
+          const a_and_b = new Set([...a].filter(e => (b.has(e))));
+          qids = [...a_and_b];
+        }
+        return qids;
+      }
+      const mergeQuests = function(quest_ids) {
+        var qids = [];
+        var now = 'sentinel';
+        var levels = '';
+        for (var i = 0; i < quest_ids.length; i++) {
+          var quest = quest_ids[i].slice(0, -2);
+          var level = quest_ids[i].slice(-1);
+          if (now !== quest) {
+            qids.push(now + '-' + levels);
+            now = quest;
+            levels = level;
           }
           else {
-            throw 'Unknown Class';
+            levels = levels + level;
           }
         }
-        catch (e) {
-          console.log("parsing:", qid, "(orig:", quest_id);
-          console.log(e);
-        }
+        return qids.slice(1);
       }
-      this.quests = quests;
+      const parseQuests = function(qids) {
+        self.showNotCompleted = false;
+        var quests = [];
+        for (let i = 0; i < qids.length; i++) {
+          const quest_id = qids[i];
+          const qid = quest_id.split('-');
+          const searchItems = function(quests, qid) {
+            for (var i = 0; i < quests.length; i++) {
+              if (quests[i].id == qid) {
+                console.log("got items", quests[i].items);
+                return quests[i].items;
+              }
+            }
+            return [];
+          }
+          try {
+            if (qid[0] == '1') {
+              const l1 = parseInt(qid[1], 10) - 1;
+              const l2 = parseInt(qid[2], 10) - 1;
+
+              let quest = {name: self.quest_world1_data[l1].name + ': ' + self.quest_world1_data[l1].quest[l2].name, items: self.quest_world1_data[l1].quest[l2].level[qid[3]].items, level: qid[3]};
+//              parseLevels(quest, qid[3]);
+              quests.push(quest);
+            }
+            else if (qid[0] == 'E') {
+              const l1 = parseInt(qid[1], 10) - 1;
+              const l2 = parseInt(qid[2], 10) - 1;
+              let quest = {name: self.quest_event_data[l1].name, items: self.quest_event_data[l1].quest[l2].level[qid[3]].items, level: qid[3]};
+//              parseLevels(quest, qid[2]);
+              quests.push(quest);
+            }
+            else if (qid[0] == 'W') {
+              const l1 = {'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thr': 4, 'Fri': 5, 'Sat': 6}[qid[1]];
+              const l2 = parseInt(qid[2], 10) - 1;
+              let quest = {name: self.quest_week_data[l1].name + ': ' + self.quest_week_data[l1].quest[l2].name, items: self.quest_week_data[l1].quest[l2].level[qid[3]].items, level: qid[3]};
+//              parseLevels(quest, qid[3]);
+              quests.push(quest);
+            }
+            else if (qid[0] == 'U') {
+              const l1 = parseInt(qid[1], 10) - 1;
+              const l2 = parseInt(qid[2], 10) - 1;
+              let quest = {name: "不明: " + self.quest_unknown_data[l1].name, items: self.quest_unknown_data[l1].quest[l2].level[qid[3]].items, level: qid[3]};
+//              parseLevels(quest, qid[2]);
+              quests.push(quest);
+            }
+            else if (qid[0] == 'M') {
+              self.showNotCompleted = true;
+            }
+            else {
+              throw 'Unknown Class';
+            }
+          }
+          catch (e) {
+            console.log("parsing:", qid, "(orig:", quest_id);
+            console.log(e);
+          }
+        }
+        return quests;
+      }
+      var sq = getIntersection(this.checked_items);
+      console.log("intersection", sq);
+      /*
+      var mq = mergeQuests(sq);
+      console.log("merged", mq);
+      */
+      var qids = parseQuests(sq);
+      console.log("result", qids);
+      return qids;
+    },
+/*
+      var qids = getQuests(checked_items[0]);
+      for (let i = 1; i < this.checked_items.length; i++) {
+        const b = new Set(getQuests(checked_items[i]));
+        const a = new Set(qids);
+        const a_and_b = new Set([...a].filter(e => (b.has(e))));
+        qids = [...a_and_b];
+      }
+
+      this.quests = [];
+    },
+    */
+    mergeQuests: function(quest_ids) {
+      var qids = {};
+      for (var i = 0; i < quest_ids; i++) {
+        var quest = this.quest_ids.slice(0, -2);
+        var level = this.quest_ids.slice(-1);
+        if (qids[quest] === undefined) {
+          qids[quest] = '';
+        }
+        qids[quest] = qids[quest] + level;
+      }
+      return qids;
     },
     parseQuest: function(quest_id) {
       if (Object.keys(quest_id).length == 0) {
