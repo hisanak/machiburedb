@@ -5,14 +5,14 @@
       <div class="sel_pundit" v-for="pundit in pundits" :key="pundit.id">
         <div class="item_bundle">
           <input type="radio" class="chkbox_group" :id="pundit" :value="pundit" v-model="checked_pundit" />
-          <label class="" :for="pundit">{{ pundit }}</label>
+          <label class="pundit" :for="pundit">{{ pundit }}</label>
         </div>
       </div>
     </div>
     <br />
     <div class="way_list" v-if="showHow">
       <div v-for="way in ways" :key="way.id">
-        <p class="way">{{ way }}</p>
+        <p class="way">{{ way.expl }} <strong>{{ way.remark }}</strong></p>
       </div>
     </div>
   </div>
@@ -27,7 +27,8 @@ export default {
       pundits: undefined,
       pundit_data: require('../db/pundit.json'),
       checked_pundit: null,
-      ways: ['賢者を選択してください'],
+      ways_default: [{expl: '賢者を選択してください', remark: ''}],
+      ways: [],
       showHow: false,
     }
   },
@@ -53,6 +54,7 @@ export default {
     },
   },
   mounted() {
+    this.ways = this.ways_default;
     this.pundits = Object.keys(this.pundit_data);
     this.showHow = true;
   },
@@ -60,27 +62,34 @@ export default {
     gatherHow: function() {
       console.log(this.checked_pundit);
       if (this.checked_pundit === undefined) {
-        return ['賢者を選択してください'];
+        return this.ways_default;
       }
       var raw_ways = this.pundit_data[this.checked_pundit];
       console.log(raw_ways);
       if (raw_ways === undefined) {
-        return ['賢者を選択してください'];
+        return this.ways_default;
       }
       var ways = [];
       for (var i = 0; i < raw_ways.length; i++) {
         var way = raw_ways[i];
-        var t = 'x' + way.num + ' ' + way.expl;
-        if (way.reset !== undefined) {
-          t += '(回数リセット)';
-        }
+        var expl = 'x' + way.num + ' ' + way.expl;
+        var remark = '';
         if (way.price !== undefined) {
-          t += ' ' + way.price + '円';
+          expl += ' ' + way.price + '円';
+        }
+        if (way.reset !== undefined) {
+          remark += '達成するたび回数リセット';
         }
         if (way.remark !== undefined) {
-          t += ' ※' + way.remark;
+          if (remark.length > 0) {
+            remark += '、';
+          }
+          remark += way.remark;
         }
-        ways.push(t);
+        if (remark.length > 0) {
+          remark = '※' + remark;
+        }
+        ways.push({expl, remark});
       }
       return ways;
     }
@@ -94,6 +103,9 @@ div.sel_list {
   margin: 0 auto;
   width: 95%;
   height: auto;
+}
+label.pundit {
+  font-size: 2.4vw;
 }
 div.sel_list:after {
   display: block;
