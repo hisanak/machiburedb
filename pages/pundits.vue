@@ -39,7 +39,7 @@ export default {
         { hid: 'items-twitter:card', name: 'twitter:card', content: 'summary_large_image' },
         { hid: 'items-twitter:title', name: 'twitter:title', content: 'マチブレ素材ドロップ検索' },
         { hid: 'items-twitter:description', name: 'twitter:description', content: this.description },
-        { hid: 'items-twitter:image', name: 'twitter:image', content: 'http://mbc.hisana.me/img/items_thumb.png' } 
+        { hid: 'items-twitter:image', name: 'twitter:image', content: 'http://mbc.hisana.me/img/pundits_thumb.png' } 
       ]
     }
   },
