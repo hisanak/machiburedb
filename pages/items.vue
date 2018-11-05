@@ -43,7 +43,7 @@ export default {
       quest_week_data: require('../db/week.json'),
       quest_event_data: require('../db/event.json'),
       groups: require('../db/group.json'),
-      checked_groups: ['G', 'W', 'S', 'B', 'E'],
+      checked_groups: ['G'], //'W', 'S', 'B', 'E'
       items: [],
       checked_items: [],
       quests: [],
@@ -400,12 +400,15 @@ div.item_bundle {
   display: inline-block;
   width: 100%;
   height: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 label.chk_item {
   width: 100%;
   height: 100%;
-  margin: 0vw;
-  font-size: 2.2vw;
+  padding: 3px 0px;
+  margin: 0px;
+  font-size: 1.8vw;
   vertical-align: middle;
   text-align: center;
 }
