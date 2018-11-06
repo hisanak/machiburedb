@@ -38,6 +38,11 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  modules: [
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-128593970-1'
+    }]
+  ]
 }
 
