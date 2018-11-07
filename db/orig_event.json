@@ -7,7 +7,7 @@
         "quest": [
             {
                 "name": "盗まれた「願いの詩」",
-                "level": "NH"
+                "levels": "NH"
             }
         ]
     },
@@ -19,7 +19,7 @@
         "quest": [
             {
                 "name": "夜空を覆う雷雲",
-                "level": "NHE"
+                "levels": "NHE"
             }
         ]
     },
@@ -31,7 +31,7 @@
         "quest": [
             {
                 "name": "果たし状！熱いアイツと白熱バトル",
-                "level": "NH"
+                "levels": "NH"
             }
         ]
     },
@@ -43,7 +43,7 @@
         "quest": [
             {
                 "name": "フィナーレは、優しい奏と共に！",
-                "level": "NHE"
+                "levels": "NHE"
             }
         ]
     },
@@ -55,7 +55,7 @@
         "quest": [
             {
                 "name": "発掘せよ！太古の叡智",
-                "level": "NH"
+                "levels": "NH"
             }
         ]
     },
@@ -67,7 +67,7 @@
         "quest": [
             {
                 "name": "邪を退ける銘刀の刃文",
-                "level": "NHE"
+                "levels": "NHE"
             }
         ]
     },
@@ -79,7 +79,7 @@
         "quest": [
             {
                 "name": "賞賛されし知識",
-                "level": "NH"
+                "levels": "NH"
             }
         ]
     },
@@ -91,7 +91,7 @@
         "quest": [
             {
                 "name": "偽英雄と駄々っ子双竜",
-                "level": "NHE"
+                "levels": "NHE"
             }
         ]
     }
