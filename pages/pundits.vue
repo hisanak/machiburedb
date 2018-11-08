@@ -60,34 +60,36 @@ export default {
   },
   methods: {
     gatherHow: function() {
-      console.log(this.checked_pundit);
       if (this.checked_pundit === undefined) {
         return this.ways_default;
       }
       var raw_ways = this.pundit_data[this.checked_pundit];
-      console.log(raw_ways);
       if (raw_ways === undefined) {
         return this.ways_default;
       }
       var ways = [];
       for (var i = 0; i < raw_ways.length; i++) {
         var way = raw_ways[i];
-        var expl = 'x' + way.num + ' ' + way.expl;
+        var expls = ['x' + way.num, way.expl];
+        var expl = '';
+        var remarks = [];
         var remark = '';
         if (way.price !== undefined) {
-          expl += ' ' + way.price + '円';
+          expls.push(way.price + '円');
         }
-        if (way.reset !== undefined) {
-          remark += '達成するたび回数リセット';
+        if (way.guess === true) {
+          remarks.push('検証中');
+        }
+        if (way.reset === true) {
+          remarks.push('達成するたび回数リセット');
         }
         if (way.remark !== undefined) {
-          if (remark.length > 0) {
-            remark += '、';
-          }
-          remark += way.remark;
+          remarks.push(way.remark);
         }
-        if (remark.length > 0) {
-          remark = '※' + remark;
+
+        expl = expls.join(' ');
+        if (remarks.length > 0) {
+          remark = '※' + remarks.join('、');
         }
         ways.push({expl, remark});
       }
