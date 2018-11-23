@@ -43,7 +43,7 @@ export default {
       quest_week_data: require('../db/week.json'),
       quest_event_data: require('../db/event.json'),
       groups: require('../db/group.json'),
-      checked_groups: ['G'], //'W', 'S', 'B', 'E'
+      checked_groups: ['G', 'E'], //'W', 'S', 'B', 'E'
       items: [],
       checked_items: [],
       quests: [],
