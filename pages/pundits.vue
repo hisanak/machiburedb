@@ -1,8 +1,8 @@
 <template>
   <div class="mbc-items">
     <h1>賢者の入手方法</h1>
-    <div>
-      <span>各賢者の( )内の数値は記載した入手方法の合計値です</span>
+    <div class="memo">
+      <p class="memo">※各賢者の( )内の数値は記載した入手方法の合計値です</p>
     </div>
     <div class="sel_list">
       <div class="sel_pundit" v-for="pundit in pundits" :key="pundit.id">
@@ -103,6 +103,15 @@ export default {
 </script>
 
 <style>
+div.memo {
+  align: center;
+  margin: 0 auto;
+  width: 95%;
+  height: auto;
+}
+p.memo {
+  font-size: 1.8vw;
+}
 div.sel_list {
   align: center;
   margin: 0 auto;
@@ -110,7 +119,7 @@ div.sel_list {
   height: auto;
 }
 label.pundit {
-  font-size: 2.4vw;
+  font-size: 2vw;
 }
 div.sel_list:after {
   display: block;
